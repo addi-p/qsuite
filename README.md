@@ -597,3 +597,34 @@ as per [digitalocean](https://www.digitalocean.com/docs/droplets/resources/troub
 $ python setup.py install  #or
 $ python3 setup.py install
 ```
+
+## Developer notes
+
+the file structure in `qsuite` and some notes
+
+```bash
+.
+├── __init__.py
+├── jobscripts      # files to run job.py for each suported queuing system
+│   ├── PBSdummy.sh
+│   ├── SGEdummy.sh
+│   └── SLURMdummy.sh
+├── printparams.py
+├── qconfig.py
+├── qsuite_binary.py
+├── qsuiteparse.py
+├── queuesys        # files needed on the remote-server
+│   ├── __init__.py
+│   ├── job.py
+│   └── wrap_results.py
+├── ssh.py
+├── submitjob.py
+├── template.py
+├── templates       # template files that are created at `qsuite init`
+│   ├── custom_wrap_results.py
+│   ├── env
+│   ├── qsuite_config.py
+│   └── simulation.py
+└── tools.py
+
+```
