@@ -6,6 +6,7 @@
 #PBS -o %s
 #PBS -e %s
 #PBS -p %d
+# PPK: here goes the project id (exists for SLURM, for PBS no idea--> TODO) PBS -account %s
 
 # Change to current working directory (directory where qsub was executed)
 # within PBS job (workaround for SGE option "-cwd")

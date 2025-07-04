@@ -40,6 +40,7 @@ def get_jobscript(cf,array_id=None):
                 arr_id_max,
                 cf.serverpath + out_pattern,
                 cf.serverpath + out_pattern,
+                cf.project_id,
                 cf.priority,
                 cf.server_cmds,
                 cf.pythonpath,
@@ -49,11 +50,11 @@ def get_jobscript(cf,array_id=None):
     return jobscript
 
 def get_file_list(cf):
-    
-    files_destinations = [            
-            ( 
+
+    files_destinations = [
+            (
                 os.path.join(qsuite.__path__[0],"queuesys","wrap_results.py"),
-                cf.serverpath + "/wrap_results.py" 
+                cf.serverpath + "/wrap_results.py"
             ),
             (
                 os.path.join(qsuite.__path__[0],"queuesys","job.py"),
@@ -83,7 +84,7 @@ def make_job_ready(cf,ssh,array_id=None):
 
     for a_id in array_id:
         jobscript = get_jobscript(cf,a_id)
-        print("\nUsing jobscript:\n================")    
+        print("\nUsing jobscript:\n================")
         print(jobscript)
 
         if a_id is not None and (type(a_id) not in [ tuple, list ]):
@@ -104,7 +105,7 @@ def make_job_ready(cf,ssh,array_id=None):
         joblocal_names.append(joblocalname)
 
     sftp_put_files(ssh,cf,files_destinations)
-    
+
     for joblocalname in joblocal_names:
         qsuite.rm(joblocalname)
 
@@ -122,7 +123,7 @@ def start_job(cf,ssh,array_id=None):
         suffices = ["_%d.sh" % a_id if type(a_id) in [ int ] else "_%d_%d.sh" % tuple(a_id) for a_id in array_id]
     else:
         suffices = [".sh"]
-        
+
     for suffix in suffices:
         if cf.queue=="SGE":
             ssh_command(ssh,"cd " +cf.serverpath+";\
@@ -156,4 +157,4 @@ def start_job(cf,ssh,array_id=None):
     else:
         cmd = ('echo " " > '+filepath+'%d_%d; done;') % (int(array_id)-1,N)
     ssh_command(ssh,cmd)
-    
+

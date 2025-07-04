@@ -6,6 +6,7 @@
 #$ -o %s
 #$ -e %s
 #$ -p %d
+# here goes the project id (exists for SLURM, for SGE no idea, TODO)$ -a %s
 
 # Bash arrays use zero-based indexing but you CAN'T use #$ -t 0-9 (0 is an invalid task id)
 if [ -f ~/.bash_profile ]; then

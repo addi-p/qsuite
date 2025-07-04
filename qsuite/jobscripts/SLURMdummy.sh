@@ -6,6 +6,7 @@
 #SBATCH -o %s
 #SBATCH -e %s
 #SBATCH --priority=%d
+#SBATCH --account=%s
 
 # here go "server_cmds": server specific commands necessary to run the job 
 %s

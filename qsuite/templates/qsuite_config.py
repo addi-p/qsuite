@@ -1,4 +1,4 @@
-import os 
+import os
 
 #=========== SIMULATION DETAILS ========
 projectname = "project"
@@ -43,11 +43,14 @@ priority = 0
 username = "user"
 server = "localhost"
 useratserver = username + u'@' + server
+# below the project id of the SynoSys starter project,
+# if the computation is part of another project (p_replicatordyn, p_epoch_data), PLEASE specify here
+project_id = "p_s_synosys"
 
 shell = "/bin/bash"
 pythonpath = "python"
 name = basename + "_NMEAS_" + str(N_measurements) + "_ONLYSAVETIME_" + str(only_save_times)
-serverpath = "/home/"+username +"/"+ projectname + "/" + name 
+serverpath = "/home/"+username +"/"+ projectname + "/" + name
 resultpath = serverpath + "/results"
 
 #============ CLUSTER PREPARATION ==================================================

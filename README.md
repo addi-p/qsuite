@@ -1,6 +1,6 @@
 # QSuite 
 
-Provides a general framework to submit array jobs on an SGE (Sun Grid Engine) or a PBS (Portable Batch System) queueing system with multiple parameters and multiple measurements. Includes easy collection, possible costumized preprocessing and download of the jobs' results.
+Provides a general framework to submit array jobs on a SLURM (Simple Linux Utility for Resource Management), SGE (Sun Grid Engine) or a PBS (Portable Batch System) queueing system with multiple parameters and multiple measurements. Includes easy collection, possible costumized preprocessing and download of the jobs' results.
 
 After the installation, a common qsuite workflow is:
 
@@ -200,6 +200,9 @@ priority = 0
 username = "user"
 server = "server"
 useratserver = username + u'@' + server
+# below the project id of the SynoSys starter project,
+# if the computation is part of another project (p_replicatordyn, p_epoch_data), PLEASE specify here
+project_id = "p_s_synosys"
 
 shell = "/bin/bash"
 pythonpath = "/usr/bin/python"
