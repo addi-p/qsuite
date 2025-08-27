@@ -1,8 +1,8 @@
 import os
 
 #=========== SIMULATION DETAILS ========
-projectname = "project"
-basename = "experimentname"
+projectname = "Cluster_test"
+basename = "brownian"
 
 seed = -1
 N_measurements = 10 #we want 10 measurements for each parameter combination
@@ -56,13 +56,13 @@ project_id = "p_s_synosys"
 shell = "/bin/bash"
 pythonpath = "/data/horse/ws/adpe649f-adrians-workspace/my_env/bin/python"
 name = basename + "_NMEAS_" + str(N_measurements) + "_ONLYSAVETIME_" + str(only_save_times)
-serverpath = "/home/"+username +"/"+ projectname + "/" + name
+serverpath = "/home/adpe649f/Workspaces/horse/adpe649f-adrians-workspace/"+projectname + "/" + name
 resultpath = serverpath + "/results"
 
 #============ CLUSTER PREPARATION ==================================================
 #======  bash code loading modules to enable python:                      ==========
 #======  e.g. "ml purge; ml +development/24.04 +GCCcore/13.3.0 +Python"   ==========
-server_cmds = "ml release/24.10 GCCcore/13.2.0 libffi/3.4.4 bzip2/1.0.8 Python/3.11.5"
+server_cmds = "ml purge; ml release/24.10 GCCcore/13.2.0 libffi/3.4.4 bzip2/1.0.8 Python/3.11.5"
 
 
 #============== LOCAL SETTINGS ============
@@ -75,7 +75,7 @@ n_local_cpus = 1
 #             ]
 
 git_repos = [
-               ( "/home/"+username+"/brownian-motion", 
-                server_cmds + "; " + pythonpath + " setup.py install --user",
-                "https://github.com/PaPeK/qsuite.git" )
+                ( serverpath,
+                  server_cmds + "; " + pythonpath + " -m pip install -e . --user",
+                  "https://github.com/PaPeK/qsuite.git")
             ]

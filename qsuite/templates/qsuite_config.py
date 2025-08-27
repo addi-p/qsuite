@@ -16,6 +16,9 @@ params4 = range(3)
 params5 = range(3)
 params6 = range(3)
 
+
+# each computation node is a assigned a combination of external parameters.
+# external parameters should not influence computation time too much
 external_parameters = [
                         ( 'p1', params1[:2]   ),
                         ( 'p2', params2       ),
