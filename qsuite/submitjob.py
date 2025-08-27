@@ -33,6 +33,7 @@ def get_jobscript(cf,array_id=None):
         arr_id_min = array_id
         arr_id_max = array_id
 
+# TODO: some bug here
     jobscript = JOBSCRIPT % (\
                 cf.shell,
                 cf.memory,
@@ -40,8 +41,8 @@ def get_jobscript(cf,array_id=None):
                 arr_id_max,
                 cf.serverpath + out_pattern,
                 cf.serverpath + out_pattern,
-                cf.project_id,
                 cf.priority,
+                cf.project_id,
                 cf.server_cmds,
                 cf.pythonpath,
                 cf.serverpath,

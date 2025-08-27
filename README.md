@@ -157,6 +157,7 @@ import os
 
 #=========== SIMULATION DETAILS ========
 projectname = "brownian_motion"
+basename = "bm_const_dt"
 seed = -1
 N_measurements = 10 #we want 10 measurements for each parameter combination
 save_each_run = False #activate, if your simulation output is large (~ 200 MB)
@@ -206,7 +207,6 @@ project_id = "p_s_synosys"
 
 shell = "/bin/bash"
 pythonpath = "/usr/bin/python"
-basename = "bm_const_dt"
 name = basename + "_NMEAS_" + str(N_measurements) + "_ONLYSAVETIME_" + str(only_save_times)
 serverpath = "/home/"+username +"/"+ projectname + "/" + name 
 resultpath = serverpath + "/results"
